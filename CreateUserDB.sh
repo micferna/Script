@@ -1,11 +1,14 @@
-#! /bin/bash
+#!/bin/bash
+PASS=`pwgen -s 70 1`
+user=`pwgen 12 1`
 
-newUser=''
-newDbPassword=''
-newDb=''
-#host=localhost
-host='%'
+mysql -uroot <<MYSQL_SCRIPT
+CREATE DATABASE $user character set utf8mb4 collate utf8mb4_unicode_ci;
+CREATE USER '$user'@'%' IDENTIFIED BY '$PASS';
+GRANT ALL PRIVILEGES ON $user.* TO '$user'@'%';
+FLUSH PRIVILEGES;
+MYSQL_SCRIPT
 
-commands="CREATE DATABASE \`${newDb}\`;CREATE USER '${newUser}'@'${host}' IDENTIFIED BY '${newDbPassword}';GRANT USAGE ON *.* TO '${newUser}'@'${host}' IDENTIFIED BY '${newDbPassword$TO '${newUser}'@'${host}';FLUSH PRIVILEGES;"
-
-echo "${commands}" | /usr/bin/mysql -u root -p
+echo "MySQL crées."
+echo "Username:   $user"
+echo "Password:   $PASS"
