@@ -90,3 +90,6 @@ man() {
 
 #Crées un user+mdp sql aléatoirement
 alias sql='sudo sh /home/ocb/script/CreateUserMariadb.sh'
+
+alias lga = log --graph --date-order --all \
+  --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
