@@ -74,7 +74,21 @@ alias pbpaste='xclip -selection clipboard -o'
 alias timer='echo "Timer started. Stop with Ctrl-D." && date "+%a, %d %b %H:%M:%S" && time cat && date "+%a, %d %b %H:%M:%S"'
 alias tldr='tldr -t base16'
 
+#Crées un user+mdp sql aléatoirement
+alias sql='sudo sh /home/ocb/script/CreateUserMariadb.sh'
+
+
+
+
+############################################
 #Man en couleur
+
+mkcd ()
+{
+  mkdir -p -- "$1" && cd -P -- "$1"
+}
+
+
 
 man() {
      env \
@@ -87,9 +101,3 @@ man() {
      LESS_TERMCAP_us=$'\E[04;38;5;146m' \
      man "$@"
 }
-
-#Crées un user+mdp sql aléatoirement
-alias sql='sudo sh /home/ocb/script/CreateUserMariadb.sh'
-
-alias lga = log --graph --date-order --all \
-  --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
