@@ -1,9 +1,3 @@
-# Pour du A+
-https://www.ssllabs.com
-https://observatory.mozilla.org
-
-
-
     ssl_session_timeout 1d;
     ssl_session_cache shared:SSL:10m;
     ssl_session_tickets off;
@@ -17,18 +11,17 @@ https://observatory.mozilla.org
     ssl_prefer_server_ciphers on;
 
 
-    add_header Strict-Transport-Security "max-age=63072000; includeSubdomains" always;
+    add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload";
+
     add_header X-Robots-Tag none;
     add_header X-Frame-Options DENY;
     add_header X-Served-By "ByPoulette";
     add_header X-Content-Type-Options nosniff;
-    add_header Access-Control-Allow-Origin: http://www.micferna.eu;
+    add_header Access-Control-Allow-Origin: https://www.micferna.eu;
     add_header X-Permitted-Cross-Domain-Policies none;
-    add_header Content-Security-Policy "default-src 'self';";
     add_header X-XSS-Protection "1; mode=block";
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-
-
+    add_header Content-Security-Policy "frame-ancestors 'self' micferna.eu; default-src 'self';";
 
     ssl_stapling on;
     ssl_stapling_verify on;
